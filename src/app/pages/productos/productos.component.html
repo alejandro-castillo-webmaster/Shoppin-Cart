@@ -4,7 +4,7 @@
             <img [src]=item.url class="card-img-top img-thumbnail" [alt]=item.nombre>
             <div class="card-body">
                 <h5 class="card-title">{{ item.nombre }}</h5>
-                <p class="card-text">Precio de la unidad {{ item.precio }} €/ud.</p>
+                <p class="card-text"> {{ item.precio }} € unidad</p>
             </div>
             <button type="button" class="btn btn-secondary" (click)="addShoppingCart(item)">Añadir al carrito</button>
         </div>
