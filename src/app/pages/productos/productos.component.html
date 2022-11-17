@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="row m-3">
+        <div class="col-3 card m-3" *ngFor="let item of productos">
+            <img [src]=item.url class="card-img-top img-thumbnail" [alt]=item.nombre>
+            <div class="card-body">
+                <h5 class="card-title">{{ item.nombre }}</h5>
+                <p class="card-text">Precio de la unidad {{ item.precio }} €/ud.</p>
+            </div>
+            <button type="button" class="btn btn-secondary" (click)="addShoppingCart(item)">Añadir al carrito</button>
+        </div>
+    </div>
+</div>

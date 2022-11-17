@@ -1,0 +1,43 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shopingCartModal">
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="shopingCartModal" tabindex="-1" aria-labelledby="shopingCartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="shopingCartModalLabel">Carrito de compra</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <span *ngIf="totalUds != 0; else empty">
+                    <ul class="list-group">
+                        <li *ngFor="let item of shoppingCart; let i = index" class="list-group-item">
+                            # {{ i + 1 }} - <strong> {{ item.nombre }} </strong> - {{ item.uds }} uds. - {{ item.precio
+                            }} €
+                            <span class="pointer m-2 float-end" (click)="delete(item)"><i class="fa fa-trash"  aria-hidden="true"></i></span>
+                            <span class="pointer m-2 float-end" (click)="changeValue(item, '-')"><i class="fa fa-minus"  aria-hidden="true"></i></span>
+                            <span class="pointer m-2 float-end" (click)="changeValue(item, '+')"><i class="fa fa-plus"  aria-hidden="true"></i></span>
+                        </li>
+                    </ul>
+                    <p class="float-end m-0"><strong> {{ totalUds }} Uds </strong></p>
+                    <br>
+                    <p class="float-end m-0"><strong> {{ totalPrice | number }} € sin iva </strong></p>
+                    <br>
+                    <p class="float-end m-0"><strong> {{ iva | number }} IVA </strong></p>
+                    <br>
+                    <p class="float-end m-0"><strong> {{ totalPrice + iva | number }} € con iva </strong></p>
+                </span>
+                <ng-template #empty>
+                    No ha añadido nada a su carrito de compra.
+                </ng-template>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" disabled>Pagar</button>
+            </div>
+        </div>
+    </div>
+</div>
